@@ -1,0 +1,11 @@
+---
+- name: upgrading all packages excpt kernal and foo related 
+  hosts: web
+  gather_facts: no
+  become: yes
+  tasks:
+    - name: using yum
+      yum:
+       name: '*'
+       state: latest
+       exclude: kernal*,foo* 
