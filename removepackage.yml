@@ -12,7 +12,7 @@
          - httpd
          - nginx
          - samba
-         - postgresql
+         - postgresql-server
     - name: service starting
       service:
           name: "{{ item }}"
