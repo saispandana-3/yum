@@ -1,0 +1,17 @@
+---
+- name: uninstalling packages
+  hosts: web
+  gather_facts: no
+  become: yes
+  tasks:
+    - name: uninstalling
+      yum: 
+        name: "{{ item }}"
+        state: absent
+      loop:
+         - httpd
+         - nginx
+         - samba
+         - postgresql
+    
+
