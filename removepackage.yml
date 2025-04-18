@@ -7,11 +7,19 @@
     - name: uninstalling
       yum: 
         name: "{{ item }}"
-        state: absent
+        state: present
       loop:
          - httpd
          - nginx
          - samba
          - postgresql
+    - name: service starting
+      service:
+          name: "{{ item }}"
+          state: started
+      loop:
+        - httpd
+        - nginx
+        - postgresql
     
 
