@@ -8,4 +8,9 @@
       yum:
        name: '*'
        state: latest
-       exclude: kernal*,foo* 
+       exclude: kernal*,foo*
+      register: upgrade_output
+    - name: creating file
+      copy:
+        content: "{{ upgrade_output }}"
+        dest: /tmp/upgrade_ouput.txt 
