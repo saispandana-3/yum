@@ -5,12 +5,12 @@
   become: yes
   tasks:
     - name: using firewalld module
-      firewalld:
-         port: "{{ item }}"
-         permanent: yes
-         state: absent
-         immediate: yes
-         zone: public
+      ansible.posix.firewalld:
+                   port: "{{ item }}"
+                   permanent: yes
+                   state: absent
+                   immediate: yes
+                   zone: public
       loop:
         - 80/tcp
         - 8082/tcp
