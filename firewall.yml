@@ -6,8 +6,13 @@
   tasks:
     - name: Remove ports manually using firewall-cmd
       shell: |
-        firewall-cmd --permanent --remove-port={{ item }}
-        firewall-cmd --remove-port={{ item }}
+        firewall-cmd --permanent --add-port={{ item }}
+        firewall-cmd --add-port={{ item }}
+        firewall-cmd --permanent --add-service=http
+        firewall-cmd --permanent --add-service=https
+        firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="192.168.1.140" service name="http" reject'
+    
+
       loop:
         - 80/tcp
         - 8082/tcp
