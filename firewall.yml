@@ -1,16 +1,13 @@
 ---
-- name: removing ports
+- name: Removing ports using firewall-cmd
   hosts: web
   gather_facts: no
   become: yes
   tasks:
-    - name: using firewalld module
-      ansible.posix.firewalld:
-                   port: "{{ item }}"
-                   permanent: yes
-                   state: absent
-                   immediate: yes
-                   zone: public
+    - name: Remove ports manually using firewall-cmd
+      shell: |
+        firewall-cmd --permanent --remove-port={{ item }}
+        firewall-cmd --remove-port={{ item }}
       loop:
         - 80/tcp
         - 8082/tcp
