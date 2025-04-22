@@ -6,11 +6,11 @@
   tasks:
     - name: using firewalld module
       firewalld:
-         zone: public
          port: "{{ item }}"
          permanent: yes
          state: absent
          immediate: yes
+         zone: public
       loop:
         - 80/tcp
         - 8082/tcp
