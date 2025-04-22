@@ -6,6 +6,7 @@
   tasks:
     - name: using firewalld module
       firewalld:
+         zone: public
          port: "{{ item }}"
          permanent: yes
          state: absent
