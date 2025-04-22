@@ -1,0 +1,17 @@
+---
+- name: removing ports
+  hosts: web
+  gather_fatcs: no
+  become: yes
+  tasks:
+    - name: using firewalld module
+      firewalld:
+           port: "{{ item }}"
+           permanent: yes
+           state: absent
+      loop:
+        - 80/tcp
+        - 8082/tcp
+        - 8085/tcp
+        - 8086/tcp
+        - 8081/tcp
