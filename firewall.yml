@@ -9,7 +9,7 @@
          port: "{{ item }}"
          permanent: yes
          state: absent
-         immidiate: yes
+         immediate: yes
       loop:
         - 80/tcp
         - 8082/tcp
