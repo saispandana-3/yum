@@ -11,8 +11,9 @@
         firewall-cmd --permanent --add-service=http
         firewall-cmd --permanent --add-service=https
         firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="192.168.1.142" service name="http" reject'
+        firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address="192.168.1.140" port = "80/tcp" reject'
         firewall-cmd --reload
-    
+         
 
       loop:
         - 80/tcp
