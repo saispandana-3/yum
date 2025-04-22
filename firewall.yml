@@ -1,14 +1,15 @@
 ---
 - name: removing ports
   hosts: web
-  gather_fatcs: no
+  gather_facts: no
   become: yes
   tasks:
     - name: using firewalld module
       firewalld:
-           port: "{{ item }}"
-           permanent: yes
-           state: absent
+         port: "{{ item }}"
+         permanent: yes
+         state: absent
+         immidiate: yes
       loop:
         - 80/tcp
         - 8082/tcp
